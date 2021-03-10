@@ -78,28 +78,30 @@
 //     // return an object with keys that are alphanumeric characters in the string; values should be the count of the char
 // }
 
-function charCount(str) {
-  // make an object to return at the end
-  let result = {};
-  // loop over string, for each character
-  for (let i = 0; i < str.length; i++) {
-    // set string to lowercase
-    let char = str[i].toLowerCase();
-    // if the char is a number/letter AND is a key in object, add one to count
-    if (result[char] > 0) {
-      result[char]++;
-    }
-    // if the char is a number/letter AND not in object, add it to object and set value to 1
-    else {
-      result[char] = 1;
-    }
-  }
-  // if char is something else (space, period, etc) don't do anything
-  // Return object at end
-  return result;
-}
+// function charCount(str) {
+//   // RE for alphanumeric
+//   const re = /^[a-z0-9]+$/i;
+//   // make an object to return at the end
+//   let result = {};
+//   // loop over string, for each character
+//   for (let i = 0; i < str.length; i++) {
+//     // set string to lowercase
+//     let char = str[i].toLowerCase();
+//     // if the char is a number/letter AND is a key in object, add one to count
+//     if (result[char] > 0 && re.test(result[char])) {
+//       result[char]++;
+//     }
+//     // if the char is a number/letter AND not in object, add it to object and set value to 1
+//     else {
+//       result[char] = 1;
+//     }
+//   }
+//   // if char is something else (space, period, etc) don't do anything
+//   // Return object at end
+//   return result;
+// }
 
-console.log(charCount('I am the best'));
+// console.log(charCount('I am the best!!,..'));
 /***
  * Solve and Simplify
  * STEP 4
@@ -111,3 +113,72 @@ console.log(charCount('I am the best'));
 // then incorporate that difficulty back in
 
 // Look back and refactor
+
+// 1 Can you check the result?
+
+// 2 Can you derive the result differently?
+
+// 3 Can you understand it at a glance?
+
+// 4 Can you use the result or method for some other problem?
+
+// 5 Can you improve the performance of your solution?
+
+// 6 Can you think of other ways to refactor?
+
+// 7 How have other people solved the problem?
+
+/***
+ *
+ *return an object that Counts the chars in a string ignoring anything that is not alphanumeric
+ */
+
+// function charCount(str) {
+//   //Return object at the end
+//   let obj = {};
+//   // iterate through string and add the chars to the object
+//   for (let i = 0; i < str.length; i++) {
+//     // Set the characters to lowercase
+//     let char = str[i].toLowerCase();
+
+//     if (/[a-z0-9]/.test(char)) {
+//       if (obj[char] > 0) {
+//         obj[char]++;
+//       } else {
+//         obj[char] = 1;
+//       }
+//     }
+//   }
+//   return obj;
+// }
+
+// console.log(charCount('My name is Jared!'));
+
+// Refactored
+
+function charCount(str) {
+  let obj = {};
+  for (let char of str) {
+    if (isAlphaNumeric(char)) {
+      char = char.toLowerCase();
+      obj[char] = ++obj[char] || 1;
+    }
+  }
+  return obj;
+}
+
+// helper function that tests whether is alphanumeric or not and is much more efficient that REGEX
+
+function isAlphaNumeric(char) {
+  let code = char.charCodeAt(0);
+  if (
+    !(code > 47 && code < 58) && // Numeric (0-9)
+    !(code > 64 && code < 91) && // upper Alpha(A-Z)
+    !(code > 96 && code < 123) //lower alpha(a-z)
+  ) {
+    return false;
+  }
+  return true;
+}
+
+console.log(charCount('My name is Jared!'));

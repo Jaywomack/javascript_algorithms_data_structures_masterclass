@@ -1,0 +1,22 @@
+{
+  "name": "javascript_algorithms_data_structures_masterclass",
+  "version": "1.0.0",
+  "description": "",
+  "main": "analyzing_arrays_objects.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jaywomack/javascript_algorithms_data_structures_masterclass.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jaywomack/javascript_algorithms_data_structures_masterclass/issues"
+  },
+  "homepage": "https://github.com/Jaywomack/javascript_algorithms_data_structures_masterclass#readme",
+  "devDependencies": {
+    "jest": "^26.6.3"
+  }
+}
